@@ -1,37 +1,7 @@
-from ReadIES import *
-
-ies = IES("./teste.IES")
-
-Dados = {
-    'Fabricante': ies.dic['[MANUFAC]'][0].strip(),
-    'Luminaria_Cod': ies.dic['[TEST]'][0].strip(),
-    'Data': ies.dic['[TESTDATE]'][0].strip(),
-    'Luminaria': ies.dic['[LUMINAIRE]'][0].strip(),
-    'Lampada': ies.dic['[LAMP]'][0].strip(),
-    'Lampada_Descr': ies.dic['[LAMPCAT]'][0].strip(),
-    'Teste_Lab': ies.dic['[TESTLAB]'][0].strip(),
-    'Flash_Area': ies.dic['[FLASHAREA]'][0].strip(),
-    'Lampada_Num': ies.Nlamp(),
-    'Fluxo_P_Lamp': ies.Lm(),
-    'CD_Multiplicador': ies.Fat(),
-    'Num_Ang_verticais': ies.Nang(),
-    'Num_Ang_Horizontais': ies.Nah(),
-    'Ensaio_Tipo': [],
-    'Unidade_Medida': [],
-    'Largura': [],
-    'Comprimento': [],
-    'Altura': [],
-    'Potencia': [],
-    'Angulos_Verticas': ies.AngV(),
-    'Angulos_horizontais': ies.AngH(),
-    'Candela_Valores': ies.Cd(),
-    'Img_ref': []
-}
-
 
 def NewIES(Dados, Nome):
 
-    arquivo = open('./IESs/'+Nome+".IES", 'w', encoding=encodingIES)
+    arquivo = open('./IESs/'+Nome+".IES", 'w', encoding='utf-8')
 
     arquivo.write('IESNA:LM-63-2002\n')
     arquivo.write('[TEST] '+Dados['Luminaria_Cod'].strip() + "\n")
@@ -49,6 +19,3 @@ def NewIES(Dados, Nome):
     arquivo.write(str(Dados['CD_Multiplicador']) + "\n")
     arquivo.write(str(Dados['Num_Ang_verticais']) + "\n")
     arquivo.write(str(Dados['Num_Ang_Horizontais']) + "\n")
-
-
-NewIES(Dados, "teste2")
