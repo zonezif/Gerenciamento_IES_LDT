@@ -51,4 +51,4 @@ def NewIES(Dados, Nome):
     arquivo.write(str(Dados['Num_Ang_Horizontais']) + "\n")
 
 
-NewIES(Dados, "teste")
+NewIES(Dados, "teste2")

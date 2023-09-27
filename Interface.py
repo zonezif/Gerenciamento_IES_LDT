@@ -46,8 +46,6 @@ def update_data():
 
 
 # Função para atualizar a tabela
-
-
 def update_table():
     # Limpe a tabela existente
     for row in table.get_children():

@@ -58,5 +58,4 @@ def NewLDT(Dados, Nome):
 
     arquivo.write(Dados['InclinacaoLuminaria'] + "\n")  # 25
 
-    # Número de conjuntos padrão de lâmpadas
     arquivo.write(Dados['NumeroConjuntosLampadas'] + "\n")  # 26
