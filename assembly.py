@@ -28,29 +28,54 @@ meses = {
 ies = IES("./teste.IES")
 
 DadosIES = {
-    'Fabricante': ies.dic['[MANUFAC]'][0].strip(),
-    'Luminaria_Cod': ies.dic['[TEST]'][0].strip(),
+    'Fabri': ies.dic['[MANUFAC]'][0].strip(),
+    'Lumin': ies.dic['[TEST]'][0].strip(),
     'Data': ies.dic['[TESTDATE]'][0].strip(),
-    'Luminaria': ies.dic['[LUMINAIRE]'][0].strip(),
-    'Lampada': ies.dic['[LAMP]'][0].strip(),
-    'Lampada_Descr': ies.dic['[LAMPCAT]'][0].strip(),
-    'Teste_Lab': ies.dic['[TESTLAB]'][0].strip(),
-    'Flash_Area': ies.dic['[FLASHAREA]'][0].strip(),
-    'Lampada_Num': ies.Nlamp(),
-    'Fluxo_P_Lamp': ies.Lm(),
-    'CD_Multiplicador': ies.Fat(),
-    'Num_Ang_verticais': ies.Nang(),
-    'Num_Ang_Horizontais': ies.Nah(),
-    'Ensaio_Tipo': [],
-    'Unidade_Medida': [],
-    'Largura': [],
-    'Comprimento': [],
-    'Altura': [],
-    'Potencia': [],
-    'Angulos_Verticas': ies.AngV(),
-    'Angulos_horizontais': ies.AngH(),
-    'Candela_Valores': ies.Cd(),
-    'Img_ref': []
+    'Lumin': ies.dic['[LUMINAIRE]'][0].strip(),
+    'Lampa': ies.dic['[LAMP]'][0].strip(),
+    'Lampada': ies.dic['[LAMPCAT]'][0].strip(),
+    'Teste': ies.dic['[TESTLAB]'][0].strip(),
+    'Flash': ies.dic['[FLASHAREA]'][0].strip(),
+    'Lampa': ies.Nlamp(),
+    'Fluxo': ies.Lm(),
+    'CD_Mu': ies.Fat(),
+    'Num_A': ies.Nang(),
+    'Num_A': ies.Nah(),
+    'Ensaio': [],
+    'Unida': [],
+    'Largu': [],
+    'Compr': [],
+    'Altur': [],
+    'Poten': [],
+    'Angul': ies.AngV(),
+    'Angul': ies.AngH(),
+    'Cande': ies.Cd(),
+    'Img_r': []
+}
+ExpIES = {
+    'Fabri': 'Fabricante',
+    'Lumin': 'Luminaria_Cod',
+    'Data': 'Data',
+    'Lumin': 'Luminaria',
+    'Lampa': 'Lampada',
+    'Lampada': 'Lampada_Descr',
+    'Teste': 'Teste_Lab',
+    'Flash': 'Flash_Area',
+    'Lampa': 'Lampada_Num',
+    'Fluxo': 'Fluxo_P_Lamp',
+    'CD_Mu': 'CD_Multiplicador',
+    'Num_A': 'Num_Ang_verticais',
+    'Num_A': 'Num_Ang_Horizontais',
+    'Ensaio': 'Ensaio_Tipo',
+    'Unida': 'Unidade_Medida',
+    'Largu': 'Largura',
+    'Compr': 'Comprimento',
+    'Altur': 'Altura',
+    'Poten': 'Potencia',
+    'Angul': 'Angulos_Verticas',
+    'Angul': 'Angulos_horizontais',
+    'Cande': 'Candela_Valores',
+    'Img_r': 'Img_ref'
 }
 
 
@@ -82,7 +107,7 @@ else:
 
     Ass = {
         '[TEST]': 'CodZL',
-        '[ISSUEDATE]': 'DataAtual',
+        '[ISSUEDATE]': 'DataAtual, ,DataIES, lucas rev 22',
         '[MANUFAC]': 'Zagonel',
         '[LUMCAT]': 'CodZL',
         '[LUMINAIRE]': 'DesSe',
@@ -135,4 +160,6 @@ else:
             else:
                 Dados[key] += str(com)
 
-    print(Dados)
+print(Dados)
+
+NewIES(ies, Dados, 'Nome')

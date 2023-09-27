@@ -42,13 +42,13 @@ def OpenExc(LumCodigo, caminho_arquivo, nome_aba):
         'Lente': "Lente*",
         'Fonte': "Fonte de luz",
         'Angul': "Ângulo de radiação luminosa",
-        'Potên': "Potência nominal",
+        'Poten': "Potência nominal",
         'ClEff': "Classe de eficiência energética",
         'Fluxo': "Fluxo luminoso efetivo (lúmens) (±10%)",
-        'Eficá': "Eficácia luminosa (±10%)",
+        'Efica': "Eficacia luminosa (±10%)",
         'FluLED': "Fluxo luminoso do LED (Tj=25°C) (±10%)",
         'TempC': "Temperatura de cor correlata (TCC)",
-        'Tensã': "Tensão de alimentação",
+        'Tensa': "Tensão de alimentação",
         'Corre': "Corrente de entrada",
         'Corre2': "Corrente e tensão de saída (driver)",
         'Fator': "Fator de potência (FP)",
@@ -96,15 +96,15 @@ def OpenExc(LumCodigo, caminho_arquivo, nome_aba):
         'Lente': dados_produto[12],     # Lente*
         'Fonte': dados_produto[13],     # Fonte de luz
         'Angul': dados_produto[14],     # Ângulo de radiação luminosa
-        'Potên': dados_produto[15],     # Potência nominal
+        'Poten': dados_produto[15],     # Potência nominal
         'ClEff': dados_produto[16],     # Classe de eficiência energética
         # Fluxo luminoso efetivo (lúmens) (±10%)
         'Fluxo': dados_produto[17],
-        'Eficá': dados_produto[18],     # Eficácia luminosa (±10%)
+        'Efica': dados_produto[18],     # Eficacia luminosa (±10%)
         # Fluxo luminoso do LED (Tj=25°C) (±10%)
         'FluLED': dados_produto[19],
         'TempC': dados_produto[20],     # Temperatura de cor correlata (TCC)
-        'Tensã': dados_produto[21],     # Tensão de alimentação
+        'Tensa': dados_produto[21],     # Tensão de alimentação
         'Corre': dados_produto[22],     # Corrente de entrada
         'Corre2': dados_produto[23],    # Corrente e tensão de saída (driver)
         'Fator': dados_produto[24],     # Fator de potência (FP)
