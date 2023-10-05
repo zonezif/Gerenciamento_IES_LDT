@@ -10,6 +10,15 @@ ano = data_atual.year
 mes = data_atual.month
 dia = data_atual.day
 
+
+Arq = "./teste.IES"
+
+# Especifique o caminho do arquivo XLSX que deseja ler
+caminho_arquivo = './Iluminacao_Zagonel_Caracteristicas_Tecnicas.xlsx'
+
+# Especifique o nome da aba que deseja ler ou o índice numérico da aba (começando em 0)
+nome_aba = 'ZL28'  # ou índice_aba = 0
+
 meses = {
     1: 'Jan',
     2: 'Feb',
@@ -25,7 +34,7 @@ meses = {
     12: 'Dec'
 }
 
-ies = IES("./teste.IES")
+ies = IES(Arq)
 
 DadosIES = {
     'Fabri': ies.dic['[MANUFAC]'][0].strip(),
@@ -79,14 +88,7 @@ ExpIES = {
 }
 
 
-LumCodigo = 'ZL 2805'
-
-# Especifique o caminho do arquivo XLSX que deseja ler
-caminho_arquivo = './Iluminacao_Zagonel_Caracteristicas_Tecnicas.xlsx'
-
-# Especifique o nome da aba que deseja ler ou o índice numérico da aba (começando em 0)
-
-nome_aba = 'ZL28'  # ou índice_aba = 0
+LumCodigo = ies.dic['[LUMCAT]'][0].strip()
 
 ExcDados, Exp = OpenExc(LumCodigo, caminho_arquivo, nome_aba)
 
@@ -105,14 +107,14 @@ else:
         'DataIES': DadosIES['Data']
     }
 
-    Ass = {
+    AssIES = {
         '[TEST]': 'CodZL',
         '[ISSUEDATE]': 'DataAtual, ,DataIES, lucas rev 22',
         '[MANUFAC]': 'Zagonel',
         '[LUMCAT]': 'CodZL',
         '[LUMINAIRE]': 'DesSe',
-        '[LAMPCAT]': '',
-        '[LAMP]': 'LED',
+        '[LAMPCAT]': 'Leds SMD - ,TempC, - IRC ,IRC',
+        '[LAMP]': 'Leds SMD - ,TempC, - IRC ,IRC',
         '[_VOLTAGE]': '',
         '[_CURRENT]': '',
         '[_POWERFACTOR]': '',
@@ -125,7 +127,7 @@ else:
         '[BALLAST]': '',
         '[BALLASTCAT]': '',
         '[TESTDATE]': 'DataIES',
-        '[FLASHAREA]': ''
+        '[FLASHAREA]': 'Flash'
     }
 
     Dados = {
@@ -151,10 +153,12 @@ else:
         '[FLASHAREA]': ''
     }
 
-    for key in Ass.keys():
-        for com in Ass[key].split(','):
+    for key in AssIES.keys():
+        for com in AssIES[key].split(','):
             if com in ExcDados.keys():
                 Dados[key] += str(ExcDados[com])
+            elif com in DadosIES:
+                Dados[key] += str(DadosIES[com])
             elif com in Comandos:
                 Dados[key] += str(Comandos[com])
             else:

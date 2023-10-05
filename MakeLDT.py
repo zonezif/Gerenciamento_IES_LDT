@@ -1,14 +1,8 @@
 
-'''
-
-
-'''
-
-
 def NewLDT(Dados, Nome):
     arquivo = open('./LDTs/'+Nome+".LDT", 'w', encoding='utf-8')
 
-    arquivo.write(Dados['Fabricante']+"\n")  # 1
+    arquivo.write(Dados['Fabri']+"\n")  # 1
 
     arquivo.write(Dados['Tipo']+"\n")  # 2
 
