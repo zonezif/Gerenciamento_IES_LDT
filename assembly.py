@@ -36,7 +36,7 @@ meses = {
 
 ies = IES(Arq)
 
-DadosIES = {
+IESimport = {
     'Fabri': ies.dic['[MANUFAC]'][0].strip(),
     'Lumin': ies.dic['[TEST]'][0].strip(),
     'Data': ies.dic['[TESTDATE]'][0].strip(),
@@ -48,8 +48,8 @@ DadosIES = {
     'Lampa': ies.Nlamp(),
     'Fluxo': ies.Lm(),
     'CD_Mu': ies.Fat(),
-    'Num_A': ies.Nang(),
-    'Num_A': ies.Nah(),
+    'Num_Av': ies.Nang(),
+    'Num_Ah': ies.Nah(),
     'Ensaio': [],
     'Unida': [],
     'Largu': [],
@@ -73,8 +73,8 @@ ExpIES = {
     'Lampa': 'Lampada_Num',
     'Fluxo': 'Fluxo_P_Lamp',
     'CD_Mu': 'CD_Multiplicador',
-    'Num_A': 'Num_Ang_verticais',
-    'Num_A': 'Num_Ang_Horizontais',
+    'Num_Av': 'Num_Ang_verticais',
+    'Num_Ah': 'Num_Ang_Horizontais',
     'Ensaio': 'Ensaio_Tipo',
     'Unida': 'Unidade_Medida',
     'Largu': 'Largura',
@@ -86,7 +86,6 @@ ExpIES = {
     'Cande': 'Candela_Valores',
     'Img_r': 'Img_ref'
 }
-
 
 LumCodigo = ies.dic['[LUMCAT]'][0].strip()
 
@@ -104,9 +103,9 @@ else:
     '''
     Comandos = {
         'DataAtual': str(dia) + " "+meses[mes]+" "+str(ano),
-        'DataIES': DadosIES['Data']
+        'DataIES': IESimport['Data']
     }
-
+## Organização para o IES
     AssIES = {
         '[TEST]': 'CodZL',
         '[ISSUEDATE]': 'DataAtual, ,DataIES, lucas rev 22',
@@ -130,7 +129,7 @@ else:
         '[FLASHAREA]': 'Flash'
     }
 
-    Dados = {
+    DadosIES = {
         '[TEST]': '',
         '[ISSUEDATE]': '',
         '[MANUFAC]': '',
@@ -156,14 +155,56 @@ else:
     for key in AssIES.keys():
         for com in AssIES[key].split(','):
             if com in ExcDados.keys():
-                Dados[key] += str(ExcDados[com])
-            elif com in DadosIES:
-                Dados[key] += str(DadosIES[com])
+                DadosIES[key] += str(ExcDados[com])
+            elif com in IESimport:
+                DadosIES[key] += str(IESimport[com])
             elif com in Comandos:
-                Dados[key] += str(Comandos[com])
+                DadosIES[key] += str(Comandos[com])
             else:
-                Dados[key] += str(com)
+                DadosIES[key] += str(com)
 
-print(Dados)
+    #print(Dados)
+    NewIES(ies, DadosIES, 'Nome')
+    ##fim IES
 
-NewIES(ies, Dados, 'Nome')
+    ##Inicio do LDT
+
+    AssLDT={
+        'Manufac':'Zagonel',
+        'ltyp':'2',
+        'lsym':'0',
+        'mc': str(int(IESimport['Num_Ah'])-1),
+        'dc':str(360/(int(IESimport['Num_Ah'])-1)),
+        'ng':IESimport['Num_Av'],
+        'dg':str(180/(int(IESimport['Num_Av'])-1)),
+        'serNum':'CodZL', #editavel
+        'lumNam':'DesSe',
+        'lumNum':'CodZL',
+        'arquvNam':'Nome do arquivo'
+    }
+
+    DadosLDT={
+        'Manufac':'',
+        'ltyp':'',
+        'lsym':'',
+        'mc':'',
+        'dc':'',
+        'ng':'',
+        'dg':'',
+        'serNum':'', #editavel
+        'lumNam':'',
+        'lumNum':'',
+        'arquvNam':''
+    }
+    for key in AssLDT.keys():
+            for com in AssLDT[key].split(','):
+                if com in ExcDados.keys():
+                    DadosLDT[key] += str(ExcDados[com])
+                elif com in IESimport:
+                    DadosLDT[key] += str(IESimport[com])
+                elif com in Comandos:
+                    DadosLDT[key] += str(Comandos[com])
+                else:
+                    DadosLDT[key] += str(com)
+    print(DadosLDT)
+    #NewLDT(ies,Dados,'Nome')

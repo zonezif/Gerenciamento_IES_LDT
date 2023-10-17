@@ -1,12 +1,12 @@
 
-def NewLDT(Dados, Nome):
+def NewLDT(IES,Dados, Nome):
     arquivo = open('./LDTs/'+Nome+".LDT", 'w', encoding='utf-8')
 
     arquivo.write(Dados['Fabri']+"\n")  # 1
 
     arquivo.write(Dados['Tipo']+"\n")  # 2
 
-    arquivo.write(Dados['Simetria']+"\n")  # 3
+    arquivo. write(Dados['Simetria']+"\n")  # 3
 
     arquivo.write(Dados['Mc']+"\n")  # 4
 
