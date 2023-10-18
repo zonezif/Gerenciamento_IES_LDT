@@ -184,13 +184,11 @@ else:
         'lumNum':'CodZL',
         'arquvNam':'Nome do arquivo',
         'data':'DataAtulaLDT',
-        'compr':'',
-        'larg':'',
-        'altur':'',
-        'comprLum':'',
-        'lagurLum':''
-
-
+        'compr':'LenPr',
+        'larg':'WidPr',
+        'altur':'HeiPr',
+        'comprLum':'LenEm',
+        'lagurLum':'WidEm'
     }
 
     DadosLDT={

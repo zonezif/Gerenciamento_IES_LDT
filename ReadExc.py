@@ -130,12 +130,12 @@ def OpenExc(LumCodigo, caminho_arquivo, nome_aba):
         'Garnt': dados_produto[38],
         'DatVa': dados_produto[39],     # Data de validade para armazenamento
         'Revis': dados_produto[40],     # Revisão IES
-        'LenPr': dados_produto[41],     # Lenght(Prod.)
-        'WidPr': dados_produto[42],     # Width(Prod.)
-        'HeiPr': dados_produto[43],     # Height(Prod.)
-        'LenEm': dados_produto[44],     # Lenght(Emissão)
-        'WidEm': dados_produto[45],     # Width(Emissão)
-        'HeiEm': dados_produto[46],     # Height(Emissão)
+        'LenPr': dados_produto[41][:-2],     # Lenght(Prod.)
+        'WidPr': dados_produto[42][:-2],     # Width(Prod.)
+        'HeiPr': dados_produto[43][:-2],     # Height(Prod.)
+        'LenEm': dados_produto[44][:-2],     # Lenght(Emissão)
+        'WidEm': dados_produto[45][:-2],     # Width(Emissão)
+        'HeiEm': dados_produto[46][:-2],     # Height(Emissão)
         'NoFon': dados_produto[47]      # N° de Fontes Luminosas
     }
 
