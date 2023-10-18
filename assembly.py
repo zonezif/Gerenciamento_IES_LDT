@@ -97,18 +97,20 @@ else:
     '''
     Comandos extras
 
-    DataAtual pega data do dia 
+    IES pega data do dia 
     DataIES pega data do IES
 
     '''
     Comandos = {
-        'DataAtual': str(dia) + " "+meses[mes]+" "+str(ano),
+        'DataAtualIES': str(dia) + " "+meses[mes]+" "+str(ano),
+        'DataAtulaLDT':str(dia) + "-"+str(mes)+"-"+str(ano),
         'DataIES': IESimport['Data']
+        
     }
 ## Organização para o IES
     AssIES = {
         '[TEST]': 'CodZL',
-        '[ISSUEDATE]': 'DataAtual, ,DataIES, lucas rev 22',
+        '[ISSUEDATE]': 'IES, ,DataIES, lucas rev 22',
         '[MANUFAC]': 'Zagonel',
         '[LUMCAT]': 'CodZL',
         '[LUMINAIRE]': 'DesSe',
@@ -180,7 +182,15 @@ else:
         'serNum':'CodZL', #editavel
         'lumNam':'DesSe',
         'lumNum':'CodZL',
-        'arquvNam':'Nome do arquivo'
+        'arquvNam':'Nome do arquivo',
+        'data':'DataAtulaLDT',
+        'compr':'',
+        'larg':'',
+        'altur':'',
+        'comprLum':'',
+        'lagurLum':''
+
+
     }
 
     DadosLDT={
@@ -194,7 +204,13 @@ else:
         'serNum':'', #editavel
         'lumNam':'',
         'lumNum':'',
-        'arquvNam':''
+        'arquvNam':'',
+        'data':'',
+        'compr':'',
+        'larg':'',
+        'altur':'',
+        'comprLum':'',
+        'lagurLum':''
     }
     for key in AssLDT.keys():
             for com in AssLDT[key].split(','):
