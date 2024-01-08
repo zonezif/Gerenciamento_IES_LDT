@@ -1,55 +1,20 @@
 
 def NewLDT(IES,Dados, Nome):
     arquivo = open('./LDTs/'+Nome+".LDT", 'w', encoding='utf-8')
+    for key in Dados.keys():
+        arquivo.write(Dados[key]+"\n")
+    for i in range (10): arquivo.write('1\n')
 
-    arquivo.write(Dados['Fabri']+"\n")  # 1
+    Nahnow=0
+    DivaH = 360/(float(IES.Nah())-1)
+    for i in range(int(360/DivaH)):
+        arquivo.write(str(Nahnow)+"\n")
+        Nahnow+= DivaH
 
-    arquivo.write(Dados['Tipo']+"\n")  # 2
+    for i in range(int(IES.Nang())):
+        arquivo.write(f'{float(i):.2f}\n')
 
-    arquivo. write(Dados['Simetria']+"\n")  # 3
+    for i in range(len(IES.Cd())-1):
+        for j in range(len(IES.Cd()[i])):
+            arquivo.write(f'{float(IES.Cd()[i][j]) / IES.Lm() * 1000:.5f}\n')
 
-    arquivo.write(Dados['Mc']+"\n")  # 4
-
-    arquivo.write(Dados['Dc']+"\n")  # 5
-
-    arquivo.write(Dados['Ng'] + "\n")  # 6
-
-    arquivo.write(Dados['Dg'] + "\n")  # 7
-
-    arquivo.write(Dados['NumeroRelatorio'] + "\n")  # 8
-
-    arquivo.write(Dados['NomeLuminaria'] + "\n")  # 9
-
-    arquivo.write(Dados['NumeroLuminaria'] + "\n")  # 10
-
-    arquivo.write(Dados['NomeArquivo'] + "\n")  # 11
-
-    arquivo.write(Dados['DataUsuario'] + "\n")  # 12
-
-    arquivo.write(Dados['ComprimentoDiametro'] + "\n")  # 13
-
-    arquivo.write(Dados['LarguraLuminaria'] + "\n")  # 14
-
-    arquivo.write(Dados['AlturaLuminaria'] + "\n")  # 15
-
-    arquivo.write(Dados['ComprimentoDiametroArea'] + "\n")  # 16
-
-    arquivo.write(Dados['LarguraArea'] + "\n")  # 17
-
-    arquivo.write(Dados['AlturaAreaC0'] + "\n")  # 18
-
-    arquivo.write(Dados['AlturaAreaC90'] + "\n")  # 19
-
-    arquivo.write(Dados['AlturaAreaC180'] + "\n")  # 20
-
-    arquivo.write(Dados['AlturaAreaC270'] + "\n")  # 21
-
-    arquivo.write(Dados['DFF'] + "\n")  # 22
-
-    arquivo.write(Dados['LORL'] + "\n")  # 23
-
-    arquivo.write(Dados['FatorConversao'] + "\n")  # 24
-
-    arquivo.write(Dados['InclinacaoLuminaria'] + "\n")  # 25
-
-    arquivo.write(Dados['NumeroConjuntosLampadas'] + "\n")  # 26

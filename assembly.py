@@ -2,6 +2,7 @@
 from ReadIES import *
 from ReadExc import *
 from MakeIES import *
+from MakeLDT import *
 
 import datetime
 data_atual = datetime.date.today()
@@ -10,7 +11,7 @@ ano = data_atual.year
 mes = data_atual.month
 dia = data_atual.day
 
-
+# IES original
 Arq = "./teste.IES"
 
 # Especifique o caminho do arquivo XLSX que deseja ler
@@ -104,13 +105,18 @@ else:
     Comandos = {
         'DataAtualIES': str(dia) + " "+meses[mes]+" "+str(ano),
         'DataAtulaLDT':str(dia) + "-"+str(mes)+"-"+str(ano),
-        'DataIES': IESimport['Data']
-        
+        'DataIES': IESimport['Data'],
+        'mc': str(int(IESimport['Num_Ah'])-1),
+        'dc':str(360/(int(IESimport['Num_Ah'])-1)),
+        'ng':IESimport['Num_Av'],
+        'dg':str(180/(int(IESimport['Num_Av'])-1)),
+        'numLamp':str(ies.Nlamp()),
+        'Lm':str(ies.Lm())
     }
 ## Organização para o IES
     AssIES = {
         '[TEST]': 'CodZL',
-        '[ISSUEDATE]': 'IES, ,DataIES, lucas rev 22',
+        '[ISSUEDATE]': 'IES, ,DataIES, testedia 08',
         '[MANUFAC]': 'Zagonel',
         '[LUMCAT]': 'CodZL',
         '[LUMINAIRE]': 'DesSe',
@@ -175,10 +181,10 @@ else:
         'Manufac':'Zagonel',
         'ltyp':'2',
         'lsym':'0',
-        'mc': str(int(IESimport['Num_Ah'])-1),
-        'dc':str(360/(int(IESimport['Num_Ah'])-1)),
-        'ng':IESimport['Num_Av'],
-        'dg':str(180/(int(IESimport['Num_Av'])-1)),
+        'mc': 'mc',
+        'dc':'dc',
+        'ng':'ng',
+        'dg':'dg',
         'serNum':'CodZL', #editavel
         'lumNam':'DesSe',
         'lumNum':'CodZL',
@@ -188,7 +194,22 @@ else:
         'larg':'WidPr',
         'altur':'HeiPr',
         'comprLum':'LenEm',
-        'lagurLum':'WidEm'
+        'lagurLum':'WidEm',
+        'Cp1':'1',
+        'Cp2':'1',
+        'Cp3':'1',
+        'Cp4':'1',
+        'DFF':'100',
+        'LORL':'100',
+        'mult':'1',
+        'tilt':'0',
+        'numLampSTD':'1',
+        'numLamp':'numLamp',
+        'typelamp':'Leds SMD - ,TempC, - IRC ,IRC',
+        'Lm':'Lm',
+        'colorapp':'0',
+        'colorrender':'',
+        'potencia':'Poten'
     }
 
     DadosLDT={
@@ -208,8 +229,24 @@ else:
         'larg':'',
         'altur':'',
         'comprLum':'',
-        'lagurLum':''
+        'lagurLum':'',
+        'Cp1':'',
+        'Cp2':'',
+        'Cp3':'',
+        'Cp4':'',
+        'DFF':'',
+        'LORL':'',
+        'mult':'',
+        'tilt':'',
+        'numLampSTD':'',
+        'numLamp':'',
+        'typelamp':'',
+        'Lm':'',
+        'colorapp':'',
+        'colorrender':'',
+        'potencia':''
     }
+    
     for key in AssLDT.keys():
             for com in AssLDT[key].split(','):
                 if com in ExcDados.keys():
@@ -220,5 +257,6 @@ else:
                     DadosLDT[key] += str(Comandos[com])
                 else:
                     DadosLDT[key] += str(com)
-    print(DadosLDT)
-    #NewLDT(ies,Dados,'Nome')
+                    
+    NewLDT(ies,DadosLDT,'Nome')
+
