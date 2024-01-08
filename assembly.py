@@ -176,7 +176,6 @@ else:
     ##fim IES
 
     ##Inicio do LDT
-
     AssLDT={
         'Manufac':'Zagonel',
         'ltyp':'2',
@@ -246,6 +245,7 @@ else:
         'colorrender':'',
         'potencia':''
     }
+    #Fim LDT
     
     for key in AssLDT.keys():
             for com in AssLDT[key].split(','):
