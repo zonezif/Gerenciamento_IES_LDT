@@ -1,5 +1,7 @@
 import pandas as pd
 
+def OpenExcinc(caminho_arquivo):
+    return pd.ExcelFile(caminho_arquivo).sheet_names[2:]
 
 def OpenExc(LumCodigo, caminho_arquivo, nome_aba):
 
@@ -12,12 +14,12 @@ def OpenExc(LumCodigo, caminho_arquivo, nome_aba):
 
     # Obtenha a lista de nomes de colunas
     colunas = list(dados.columns)
-
+    
     # Exiba a lista de nomes de colunas
     # print(colunas)
 
     # print(dados[:])
-
+    print(colunas)
     if LumCodigo in colunas:
         LumIndex = colunas.index(LumCodigo)
     else:

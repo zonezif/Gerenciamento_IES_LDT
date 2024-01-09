@@ -12,7 +12,7 @@ mes = data_atual.month
 dia = data_atual.day
 
 # IES original
-Arq = "./teste.IES"
+Arq = "./11W 4000K ZL-2807 120° ZAGONEL.IES"
 
 # Especifique o caminho do arquivo XLSX que deseja ler
 caminho_arquivo = './Iluminacao_Zagonel_Caracteristicas_Tecnicas.xlsx'
@@ -89,7 +89,8 @@ ExpIES = {
 }
 
 LumCodigo = ies.dic['[LUMCAT]'][0].strip()
-
+print(LumCodigo)
+print(OpenExcinc(caminho_arquivo))
 ExcDados, Exp = OpenExc(LumCodigo, caminho_arquivo, nome_aba)
 
 if(ExcDados == False):
@@ -170,9 +171,6 @@ else:
                 DadosIES[key] += str(Comandos[com])
             else:
                 DadosIES[key] += str(com)
-
-    #print(Dados)
-    NewIES(ies, DadosIES, 'Nome')
     ##fim IES
 
     ##Inicio do LDT
@@ -245,7 +243,7 @@ else:
         'colorrender':'',
         'potencia':''
     }
-    #Fim LDT
+ 
     
     for key in AssLDT.keys():
             for com in AssLDT[key].split(','):
@@ -257,6 +255,8 @@ else:
                     DadosLDT[key] += str(Comandos[com])
                 else:
                     DadosLDT[key] += str(com)
-                    
-    NewLDT(ies,DadosLDT,'Nome')
+#Fim LDT 
 
+
+    NewLDT(ies,DadosLDT,'Nome')
+    NewIES(ies, DadosIES, 'Nome')
